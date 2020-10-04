@@ -1,9 +1,25 @@
-@model IEnumerable<Data.Ninja>
+@model List<Data.Equipment>
 @{
     ViewData["Title"] = "Shop";
 }
 
-<div class="text-center">
-    <h1 class="display-4">@ViewData["Title"]</h1>
-
+<div class="container">
+    <h1 class="display-4 text-center mb-3">@ViewData["Title"]</h1>
+    <div class="card-deck">
+        @foreach (var equipment in Model)
+        {
+            <div class="card" style="width: 18rem;">
+                <div class="card-body">
+                    <h5 class="card-title">@Html.DisplayFor(modelItem => equipment.Name)</h5>
+                    <h6 class="card-subtitle mb-2 text-muted">@Html.DisplayFor(modelItem => equipment.Category)</h6>
+                    <ul class="card-text">
+                        <li>Strength: @Html.DisplayFor(modelItem => equipment.Strength)</li>
+                        <li>Intelligence: @Html.DisplayFor(modelItem => equipment.Intelligence)</li>
+                        <li>Agility: @Html.DisplayFor(modelItem => equipment.Agility)</li>
+                    </ul>
+                    <a href="#" class="btn btn-primary">Buy $@Html.DisplayFor(modelItem => equipment.Cost)</a>
+                </div>
+            </div>
+        }
+    </div>
 </div>
