@@ -1,5 +1,5 @@
 @using Data
-@model List<Data.Equipment>
+@model IEnumerable<Data.Equipment>
 
 @{
     ViewData["Title"] = "Shop";
@@ -8,80 +8,92 @@
 <div class="container">
     <div class="d-flex align-items-center justify-content-center position-relative">
         <h1 class="display-4 mb-3">@ViewData["Title"]</h1>
-        <a class="btn btn-primary position-absolute" style="right: 0" asp-area="" asp-controller="Shop" asp-action="Index">Back</a>
-    </div>
-    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">Modal</button>
-    <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-        <div class="modal-dialog" role="document">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLabel">Edit Equipment</h5>
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">&times;</span>
-                    </button>
-                </div>
-                <div class="modal-body">
-                    <form>
-                        <div class="form-group">
-                            <label for="inputName">Name</label>
-                            <input type="text" class="form-control" id="inputName" placeholder="">
-                        </div>
-                        <div class="form-group">
-                            <label for="inputCategory">Category</label>
-                            <select class="form-control browser-default custom-select" id="inputCategory">
-                                <option value="" selected disabled hidden>Category</option>
-                                @foreach (var category in Enum.GetValues(typeof(Category)))
-                                {
-                                    <option value="@category.ToString()">@category.ToString()</option>
-                                }
-                            </select>
-                        </div>
-                        <div class="form-group">
-                            <label for="inputCost">Cost</label>
-                            <input type="number" class="form-control" id="inputCost" placeholder="" min="0">
-                        </div>
-                        <div class="form-row">
-                            <div class="form-group col-md-4">
-                                <label for="inputStrength">Strength</label>
-                                <input type="number" class="form-control" id="inputStrength" placeholder="">
-                            </div>
-                            <div class="form-group col-md-4">
-                                <label for="inputIntelligence">Intelligence</label>
-                                <input type="number" class="form-control" id="inputIntelligence" placeholder="">
-                            </div>
-                            <div class="form-group col-md-4">
-                                <label for="inputAgility">Agility</label>
-                                <input type="number" class="form-control" id="inputAgility" placeholder="">
-                            </div>
-                        </div>
-                        <button type="button" class="btn btn-danger">Remove</button>
-                        <button type="submit" class="btn btn-primary sr-only">Submit</button>
-                    </form>
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                    <button type="button" class="btn btn-primary">Save changes</button>
-                </div>
-            </div>
+        <div class="position-absolute" style="right: 0" >
+            <a class="btn btn-primary" asp-area="" asp-controller="Shop" asp-action="Index">Save</a>
+            <a class="btn btn-primary" style="color: #ffffff; cursor: pointer;" data-toggle="modal" data-target="#goBackVerificationModal">Back</a>
         </div>
     </div>
-    <div class="card-deck">
-        @foreach (var equipment in Model)
-        {
-            <div class="card" style="width: 18rem;">
-                <div class="card-body position-relative">
-                    <h5 class="card-title">
-                        @Html.DisplayFor(modelItem => equipment.Name) <i class="fas fa-edit" onclick="alert(1)"></i>
-                    </h5>
-                    <h6 class="card-subtitle mb-2 text-muted">@Html.DisplayFor(modelItem => equipment.Category)</h6>
-                    <ul class="card-text">
-                        <li>Strength: @Html.DisplayFor(modelItem => equipment.Strength)</li>
-                        <li>Intelligence: @Html.DisplayFor(modelItem => equipment.Intelligence)</li>
-                        <li>Agility: @Html.DisplayFor(modelItem => equipment.Agility)</li>
-                    </ul>
-                    <a href="#" class="btn btn-primary">Buy $@Html.DisplayFor(modelItem => equipment.Cost)</a>
-                </div>
-            </div>
-        }
+    <div class="modal fade" id="goBackVerificationModal" tabindex="-1" role="dialog" aria-labelledby="goBackVerificationModalLabel" aria-hidden="true">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalLabel">Are you sure?</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body">
+            Are you sure you want to go back without saving?
+          </div>
+          <div class="modal-footer">
+            <a type="button" class="btn btn-primary" asp-area="" asp-controller="Shop" asp-action="Index">Yes</a>
+            <button type="button" class="btn btn-secondary" data-dismiss="modal">Return</button>
+          </div>
+        </div>
+      </div>
     </div>
+    <table class="table edit-equipment">
+        <colgroup>
+            <col span="1" style="width: 26%;">
+            <col span="1" style="width: 18%;">
+            <col span="1" style="width: 12%;">
+            <col span="1" style="width: 12%;">
+            <col span="1" style="width: 12%;">
+            <col span="1" style="width: 12%;">
+            <col span="1" style="width: 8%;">
+        </colgroup>
+        <thead>
+        <tr>
+            <th>@Html.DisplayNameFor(model => model.Name)</th>
+            <th>@Html.DisplayNameFor(model => model.Category)</th>
+            <th>@Html.DisplayNameFor(model => model.Cost)</th>
+            <th>@Html.DisplayNameFor(model => model.Strength)</th>
+            <th>@Html.DisplayNameFor(model => model.Intelligence)</th>
+            <th>@Html.DisplayNameFor(model => model.Agility)</th>
+            <th>Remove</th>
+        </tr>
+        </thead>
+        <tbody>
+
+        @foreach (var item in Model)
+        {
+            <tr id="Row-@Html.DisplayFor(modelItem => item.Name)">
+                <td>
+                    <input type="text" value="@Html.DisplayFor(modelItem => item.Name)">
+                </td>
+                <td>
+                    <select class="form-control browser-default custom-select" id="inputCategory">
+                        @foreach (var category in Enum.GetValues(typeof(Category)))
+                        {
+                            @if (category.Equals(item.Category))
+                            {
+                                <option selected value="@category.ToString()">@category.ToString()</option>
+                            }
+                            else
+                            {
+                                <option value="@category.ToString()">@category.ToString()</option>
+                            }
+                        }
+                    </select>
+                </td>
+                <td>
+                    <input type="number" min="0" value="@Html.DisplayFor(modelItem => item.Cost)">
+                </td>
+                <td>
+                    <input type="number" value="@Html.DisplayFor(modelItem => item.Strength)">
+                </td>
+                <td>
+                    <input type="number" value="@Html.DisplayFor(modelItem => item.Intelligence)">
+                </td>
+                <td>
+                    <input type="number" value="@Html.DisplayFor(modelItem => item.Agility)">
+                </td>
+                <td>
+                    <input type="checkbox" name="">
+                </td>
+            </tr>
+        }
+        </tbody>
+    </table>
+    <button class="btn btn-primary w-100">Add +</button>
 </div>

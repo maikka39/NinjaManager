@@ -81,3 +81,12 @@ body {
     cursor: pointer;
     color: #bdbdbd;
 }
+
+table.edit-equipment {
+    table-layout: fixed;
+    width: 100%;
+}
+
+table.edit-equipment td>* {
+    width: 100%;
+}
