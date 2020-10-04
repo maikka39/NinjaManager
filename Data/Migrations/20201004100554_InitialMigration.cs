@@ -7,8 +7,8 @@ namespace Data.Migrations
         protected override void Up(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.CreateTable(
-                name: "Equipment",
-                columns: table => new
+                "Equipment",
+                table => new
                 {
                     Name = table.Column<string>(maxLength: 40, nullable: false),
                     Cost = table.Column<int>(nullable: false),
@@ -17,46 +17,40 @@ namespace Data.Migrations
                     Intelligence = table.Column<int>(nullable: false),
                     Agility = table.Column<int>(nullable: false)
                 },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_Equipment", x => x.Name);
-                });
+                constraints: table => { table.PrimaryKey("PK_Equipment", x => x.Name); });
 
             migrationBuilder.CreateTable(
-                name: "Ninjas",
-                columns: table => new
+                "Ninjas",
+                table => new
                 {
                     Name = table.Column<string>(maxLength: 40, nullable: false),
                     Gold = table.Column<int>(nullable: false)
                 },
-                constraints: table =>
+                constraints: table => { table.PrimaryKey("PK_Ninjas", x => x.Name); });
+
+            migrationBuilder.InsertData(
+                "Equipment",
+                new[] {"Name", "Agility", "Category", "Cost", "Intelligence", "Strength"},
+                new object[,]
                 {
-                    table.PrimaryKey("PK_Ninjas", x => x.Name);
+                    {"Fancy Hat", 0, 0, 300, 0, 0},
+                    {"Pumpkin", 0, 0, 20, 0, 0},
+                    {"Diamond Chestplate", 0, 1, 800, 0, 0}
                 });
 
             migrationBuilder.InsertData(
-                table: "Equipment",
-                columns: new[] { "Name", "Agility", "Category", "Cost", "Intelligence", "Strength" },
-                values: new object[,]
-                {
-                    { "Fancy Hat", 0, 0, 300, 0, 0 },
-                    { "Pumpkin", 0, 0, 20, 0, 0 },
-                    { "Diamond Chestplate", 0, 1, 800, 0, 0 }
-                });
-
-            migrationBuilder.InsertData(
-                table: "Ninjas",
-                columns: new[] { "Name", "Gold" },
-                values: new object[] { "Awesome_ninja67", 2000 });
+                "Ninjas",
+                new[] {"Name", "Gold"},
+                new object[] {"Awesome_ninja67", 2000});
         }
 
         protected override void Down(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.DropTable(
-                name: "Equipment");
+                "Equipment");
 
             migrationBuilder.DropTable(
-                name: "Ninjas");
+                "Ninjas");
         }
     }
 }
