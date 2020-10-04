@@ -4,7 +4,10 @@
 }
 
 <div class="container">
-    <h1 class="display-4 text-center mb-3">@ViewData["Title"]</h1>
+    <div class="d-flex align-items-center justify-content-center position-relative">
+        <h1 class="display-4 mb-3">@ViewData["Title"]</h1>
+        <a class="btn btn-primary position-absolute" style="right: 0" asp-area="" asp-controller="Shop" asp-action="Edit">Edit</a>
+    </div>
     <div class="card-deck">
         @foreach (var equipment in Model)
         {
