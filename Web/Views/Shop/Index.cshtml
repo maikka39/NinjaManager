@@ -13,14 +13,14 @@
         {
             <div class="card" style="width: 18rem;">
                 <div class="card-body">
-                    <h5 class="card-title">@Html.DisplayFor(modelItem => equipment.Name)</h5>
-                    <h6 class="card-subtitle mb-2 text-muted">@Html.DisplayFor(modelItem => equipment.Category)</h6>
+                    <h5 class="card-title">@equipment.Name <i class="fas fa-edit" onclick="alert(1)"></i></h5>
+                    <h6 class="card-subtitle mb-2 text-muted">@equipment.Category</h6>
                     <ul class="card-text">
-                        <li>Strength: @Html.DisplayFor(modelItem => equipment.Strength)</li>
-                        <li>Intelligence: @Html.DisplayFor(modelItem => equipment.Intelligence)</li>
-                        <li>Agility: @Html.DisplayFor(modelItem => equipment.Agility)</li>
+                        <li>Strength: @equipment.Strength</li>
+                        <li>Intelligence: @equipment.Intelligence</li>
+                        <li>Agility: @equipment.Agility</li>
                     </ul>
-                    <a href="#" class="btn btn-primary">Buy $@Html.DisplayFor(modelItem => equipment.Cost)</a>
+                    <a href="#" class="btn btn-primary">Buy $@equipment.Cost</a>
                 </div>
             </div>
         }

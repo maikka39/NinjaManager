@@ -9,13 +9,17 @@ namespace Data
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int Id { get; set; }
         
+        [Required]
         [StringLength(40, MinimumLength = 1)]
         public string Name { get; set; }
         
-        
-        [Required] public string Description { get; set; }
+        [Required]
+        [StringLength(256, MinimumLength = 1)]
+        public string Description { get; set; }
 
-        [Required] public string ImageUrl { get; set; }
+        [Required]
+        [StringLength(512, MinimumLength = 3)]
+        public string ImageUrl { get; set; }
 
         [Required] [Range(0, int.MaxValue)] public int Cost { get; set; }
 
