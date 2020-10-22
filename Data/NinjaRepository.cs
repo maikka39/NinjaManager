@@ -13,10 +13,10 @@ namespace Data
             return ninja;
         }
 
-        public bool Delete(string name)
+        public bool Delete(int id)
         {
             using var ctx = new NinjaManagerContext();
-            var toRemove = ctx.Ninjas.Find(name);
+            var toRemove = ctx.Ninjas.Find(id);
 
             if (toRemove == null) return false;
 
@@ -32,10 +32,10 @@ namespace Data
             return ctx.Ninjas.ToList();
         }
 
-        public Ninja GetOne(string name)
+        public Ninja GetOne(int id)
         {
             using var ctx = new NinjaManagerContext();
-            return ctx.Ninjas.FirstOrDefault(m => m.Name == name);
+            return ctx.Ninjas.FirstOrDefault(n => n.Id == id);
         }
 
         public Ninja Update(Ninja ninja)
