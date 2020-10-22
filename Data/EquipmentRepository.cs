@@ -32,10 +32,10 @@ namespace Data
             return ctx.Equipment.ToList();
         }
 
-        public Equipment GetOne(string name)
+        public Equipment GetOne(int id)
         {
             using var ctx = new NinjaManagerContext();
-            return ctx.Equipment.FirstOrDefault(m => m.Name == name);
+            return ctx.Equipment.FirstOrDefault(m => m.Id == id);
         }
 
         public Equipment Update(Equipment equipment)
