@@ -5,7 +5,7 @@
 
 <div class="text-center">
     <h1 class="display-4">@ViewData["Title"]</h1>
-    <button type="button" class="btn btn-primary m-2">Create</button>
+    <a class="btn btn-primary m-2" asp-area="" asp-controller="Ninja" asp-action="Create">Create</a>
     <table class="table">
         <thead>
         <tr>
@@ -28,11 +28,6 @@
                 <td>
                     @Html.DisplayFor(modelItem => item.Gold)
                 </td>
-                @* <td> *@
-                @*     $1$ @Html.ActionLink("Edit", "Edit", new { id = item.Id }) | #1# *@
-                @*     $1$ @Html.ActionLink("Details", "Details", new { id = item.Id }) | #1# *@
-                @*     $1$ @Html.ActionLink("Delete", "Delete", new { id = item.Id }) #1# *@
-                @* </td> *@
                 <td>
                     <button type="button" class="btn btn-secondary">Details</button>
                     <button type="button" class="btn btn-secondary">Edit</button>

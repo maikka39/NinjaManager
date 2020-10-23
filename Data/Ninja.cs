@@ -16,6 +16,8 @@ namespace Data
 
         [Required] [Range(0, int.MaxValue)] public int Gold { get; set; }
         
+        public string SkinUrl { get; set; }
+        
         public ICollection<NinjaEquipment> NinjaEquipment { get; set; }
 
     }
