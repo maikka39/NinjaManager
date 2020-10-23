@@ -19,19 +19,19 @@
         </tr>
         </thead>
         <tbody>
-        @foreach (var item in Model)
+        @foreach (var ninja in Model)
         {
             <tr>
                 <td>
-                    @Html.DisplayFor(modelItem => item.Name)
+                    @Html.DisplayFor(modelItem => ninja.Name)
                 </td>
                 <td>
-                    @Html.DisplayFor(modelItem => item.Gold)
+                    @Html.DisplayFor(modelItem => ninja.Gold)
                 </td>
                 <td>
-                    <button type="button" class="btn btn-secondary">Details</button>
-                    <button type="button" class="btn btn-secondary">Edit</button>
-                    <button type="button" class="btn btn-secondary">Delete</button>
+                    <a class="btn btn-secondary" asp-area="" asp-controller="Ninja" asp-action="Details">Details</a>
+                    <a class="btn btn-secondary" asp-area="" asp-controller="Ninja" asp-action="Edit" asp-route-id="@ninja.Id">Edit</a>
+                    <a class="btn btn-secondary" asp-area="" asp-controller="Ninja" asp-action="Delete">Delete</a>
                 </td>
             </tr>
         }
