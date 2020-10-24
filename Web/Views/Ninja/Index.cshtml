@@ -4,8 +4,10 @@
 }
 
 <div class="text-center">
-    <h1 class="display-4">@ViewData["Title"]</h1>
-    <a class="btn btn-primary m-2" asp-area="" asp-controller="Ninja" asp-action="Create">Create</a>
+    <div class="d-flex align-items-center justify-content-center position-relative">
+        <h1 class="display-4 mb-3">@ViewData["Title"]</h1>
+        <a class="btn btn-primary position-absolute" style="right: 0" asp-area="" asp-controller="Ninja" asp-action="Create">Create</a>
+    </div>
     <table class="table">
         <thead>
         <tr>
