@@ -19,7 +19,7 @@ a {
 }
 
 .nav-pills .nav-link.active,
-.nav-pills .show>.nav-link {
+.nav-pills .show > .nav-link {
     color: #fff;
     background-color: #1b6ec2;
     border-color: #1861ac;
@@ -75,18 +75,21 @@ body {
     /* Vertically center the text there */
 }
 
-.card-body .fa-edit {
+/* Other styles
+-------------------------------------------------- */
+
+.card-body .edit {
     position: absolute;
+    display: inline-block;
+    width: 1em;
+    height: 1em;
     right: 1em;
-    cursor: pointer;
     color: #bdbdbd;
 }
 
-table.edit-equipment {
-    table-layout: fixed;
-    width: 100%;
+.card-body .edit + span::after {
+    display: inline-block;
+    width: 1em;
+    height: 1em;
 }
 
-table.edit-equipment td>* {
-    width: 100%;
-}

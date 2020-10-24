@@ -6,14 +6,19 @@
 <div class="container">
     <div class="d-flex align-items-center justify-content-center position-relative">
         <h1 class="display-4 mb-3">@ViewData["Title"]</h1>
-        <a class="btn btn-primary position-absolute" style="right: 0" asp-area="" asp-controller="Shop" asp-action="Edit">Edit</a>
+        <a class="btn btn-primary position-absolute" style="right: 0" asp-area="" asp-controller="Shop" asp-action="Create">Create</a>
     </div>
     <div class="card-deck">
         @foreach (var equipment in Model)
         {
-            <div class="card" style="width: 18rem;">
+            <div class="card">
                 <div class="card-body">
-                    <h5 class="card-title">@equipment.Name <i class="fas fa-edit" onclick="alert(1)"></i></h5>
+                    <h5 class="card-title">
+                        <a class="edit" asp-area="" asp-controller="Shop" asp-action="Edit" asp-route-id="@equipment.Id">
+                            <i class="fas fa-edit"></i>
+                        </a>
+                        <span>@equipment.Name</span>
+                    </h5>
                     <h6 class="card-subtitle mb-2 text-muted">@equipment.Category</h6>
                     <ul class="card-text">
                         <li>Strength: @equipment.Strength</li>
