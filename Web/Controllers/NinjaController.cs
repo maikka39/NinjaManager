@@ -20,13 +20,6 @@ namespace Web.Controllers
             return View(new Ninja());
         }
         
-        public IActionResult Details()
-        {
-            // Needs to be changed
-            var model = _repo.GetAll();
-            return View(model);
-        }
-        
         public IActionResult Delete()
         {
             // Needs to be changed
