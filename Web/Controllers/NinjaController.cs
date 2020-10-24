@@ -1,4 +1,5 @@
 using System;
+using System.Net;
 using Data;
 using Microsoft.AspNetCore.Mvc;
 
@@ -20,10 +21,13 @@ namespace Web.Controllers
             return View(new Ninja());
         }
 
-        public IActionResult Delete()
+        public IActionResult Delete(int id)
         {
-            // Needs to be changed
-            return null;
+            var isRemoved = _repo.Delete(id);
+            
+            if (!isRemoved) Response.StatusCode = (int)HttpStatusCode.NotFound;
+            
+            return RedirectToAction("Index");
         }
 
         [HttpPost]
