@@ -61,9 +61,7 @@
                 @Html.ValidationMessageFor(model => model.Agility, "", new {@class = "text-danger"})
             </div>
         </div>
-
-        <a class="btn btn-danger" asp-area="" asp-controller="Shop" asp-action="Delete" asp-route-id="@Model.Id">Remove</a>
-
         <button type="submit" class="btn btn-primary">Submit</button>
+        <a class="btn btn-danger" asp-area="" asp-controller="Shop" asp-action="Delete" asp-route-id="@Model.Id">Delete</a>
     }
 </div>

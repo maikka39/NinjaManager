@@ -37,11 +37,11 @@ namespace Data
 
     public enum Category
     {
-        Head,
-        Chest,
-        Hand,
-        Feet,
-        Ring,
-        Necklace
+        Helmet,
+        Chestplate,
+        Leggings,
+        Boots,
+        Sword,
+        Potion
     }
 }
