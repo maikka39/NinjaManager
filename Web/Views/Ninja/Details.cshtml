@@ -7,20 +7,197 @@
 <div class="container">
     <div class="d-flex align-items-center justify-content-center position-relative">
         <h1 class="display-4 mb-3">@ViewData["Title"]</h1>
-        <a class="btn btn-primary" style="right: 0" asp-area="" asp-controller="Ninja" asp-action="Index">Back</a>
+        <a class="btn btn-primary position-absolute" style="right: 0" asp-area="" asp-controller="Ninja" asp-action="Index">Back</a>
     </div>
     <div class="container">
         <div class="row">
             <div class="col">
-                <div class="card">
-                    <img src="@Model.GetEquipmentFromNinja(Category.Head)?.ImageUrl" class="card-img-top" alt="...">
-                    <div class="card-body">
-                        <div class="card-title">@Model.GetEquipmentFromNinja(Category.Head)?.Name</div>
-                    </div>
+                <div class="card my-4">
+                    @if (Model.GetEquipmentFromNinja(Category.Head) != null)
+                    {
+                        <img src="@Model.GetEquipmentFromNinja(Category.Head).ImageUrl" class="card-img-top" alt="...">
+                        <div class="card-body">
+                            <h5 class="card-title">@Model.GetEquipmentFromNinja(Category.Head).Name</h5>
+                            <p class="card-text">@(Model.GetEquipmentFromNinja(Category.Head).Description ?? "Just a basic piece of equipment") </p>
+                        </div>
+                        <ul class="list-group list-group-flush">
+                            <li class="list-group-item">@Model.GetEquipmentFromNinja(Category.Head).Strength Strenght</li>
+                            <li class="list-group-item">@Model.GetEquipmentFromNinja(Category.Head).Agility Agility</li>
+                            <li class="list-group-item">@Model.GetEquipmentFromNinja(Category.Head).Intelligence Intelligence</li>
+                        </ul>
+                        <div class="card-body">
+                            @* TODO: Make sell equipment work *@
+                            <a class="card-link" asp-area="" asp-controller="Ninja" asp-action="Index">Sell equipment</a>
+                        </div>
+                    }
+                    else
+                    {
+                        <div class="card-body">
+                            <h5 class="card-title">Head Equipment</h5>
+                            <p class="card-text">Make your ninja better and buy him some equipment!</p>
+                        </div>
+                        <div class="card-body">
+                            @* TODO: Make buy equipment work *@
+                            <a class="btn btn-primary" asp-area="" asp-controller="Ninja" asp-action="Index">Buy equipment</a>
+                        </div>
+                    }
+                </div>
+                <div class="card my-4">
+                    @if (Model.GetEquipmentFromNinja(Category.Hand) != null)
+                    {
+                        <img src="@Model.GetEquipmentFromNinja(Category.Hand).ImageUrl" class="card-img-top" alt="...">
+                        <div class="card-body">
+                            <h5 class="card-title">@Model.GetEquipmentFromNinja(Category.Hand).Name</h5>
+                            <p class="card-text">@(Model.GetEquipmentFromNinja(Category.Hand).Description ?? "Just a basic piece of equipment") </p>
+                        </div>
+                        <ul class="list-group list-group-flush">
+                            <li class="list-group-item">@Model.GetEquipmentFromNinja(Category.Hand).Strength Strenght</li>
+                            <li class="list-group-item">@Model.GetEquipmentFromNinja(Category.Hand).Agility Agility</li>
+                            <li class="list-group-item">@Model.GetEquipmentFromNinja(Category.Hand).Intelligence Intelligence</li>
+                        </ul>
+                        <div class="card-body">
+                            @* TODO: Make sell equipment work *@
+                            <a class="card-link" asp-area="" asp-controller="Ninja" asp-action="Index">Sell equipment</a>
+                        </div>
+                    }
+                    else
+                    {
+                        <div class="card-body">
+                            <h5 class="card-title">Hand Equipment</h5>
+                            <p class="card-text">Make your ninja better and buy him some equipment!</p>
+                        </div>
+                        <div class="card-body">
+                            @* TODO: Make buy equipment work *@
+                            <a class="btn btn-primary" asp-area="" asp-controller="Ninja" asp-action="Index">Buy equipment</a>
+                        </div>
+                    }
+                </div>
+                <div class="card my-4">
+                    @if (Model.GetEquipmentFromNinja(Category.Feet) != null)
+                    {
+                        <img src="@Model.GetEquipmentFromNinja(Category.Feet).ImageUrl" class="card-img-top" alt="...">
+                        <div class="card-body">
+                            <h5 class="card-title">@Model.GetEquipmentFromNinja(Category.Feet).Name</h5>
+                            <p class="card-text">@(Model.GetEquipmentFromNinja(Category.Feet).Description ?? "Just a basic piece of equipment") </p>
+                        </div>
+                        <ul class="list-group list-group-flush">
+                            <li class="list-group-item">@Model.GetEquipmentFromNinja(Category.Feet).Strength Strenght</li>
+                            <li class="list-group-item">@Model.GetEquipmentFromNinja(Category.Feet).Agility Agility</li>
+                            <li class="list-group-item">@Model.GetEquipmentFromNinja(Category.Feet).Intelligence Intelligence</li>
+                        </ul>
+                        <div class="card-body">
+                            @* TODO: Make sell equipment work *@
+                            <a class="card-link" asp-area="" asp-controller="Ninja" asp-action="Index">Sell equipment</a>
+                        </div>
+                    }
+                    else
+                    {
+                        <div class="card-body">
+                            <h5 class="card-title">Feet Equipment</h5>
+                            <p class="card-text">Make your ninja better and buy him some equipment!</p>
+                        </div>
+                        <div class="card-body">
+                            @* TODO: Make buy equipment work *@
+                            <a class="btn btn-primary" asp-area="" asp-controller="Ninja" asp-action="Index">Buy equipment</a>
+                        </div>
+                    }
                 </div>
             </div>
-            <div class="col"></div>
-            <div class="col"></div>
+            <div class="col">
+                
+            </div>
+            <div class="col">
+                <div class="card my-4">
+                    @if (Model.GetEquipmentFromNinja(Category.Necklace) != null)
+                    {
+                        <img src="@Model.GetEquipmentFromNinja(Category.Necklace).ImageUrl" class="card-img-top" alt="...">
+                        <div class="card-body">
+                            <h5 class="card-title">@Model.GetEquipmentFromNinja(Category.Necklace).Name</h5>
+                            <p class="card-text">@(Model.GetEquipmentFromNinja(Category.Necklace).Description ?? "Just a basic piece of equipment") </p>
+                        </div>
+                        <ul class="list-group list-group-flush">
+                            <li class="list-group-item">@Model.GetEquipmentFromNinja(Category.Necklace).Strength Strenght</li>
+                            <li class="list-group-item">@Model.GetEquipmentFromNinja(Category.Necklace).Agility Agility</li>
+                            <li class="list-group-item">@Model.GetEquipmentFromNinja(Category.Necklace).Intelligence Intelligence</li>
+                        </ul>
+                        <div class="card-body">
+                            @* TODO: Make sell equipment work *@
+                            <a class="card-link" asp-area="" asp-controller="Ninja" asp-action="Index">Sell equipment</a>
+                        </div>
+                    }
+                    else
+                    {
+                        <div class="card-body">
+                            <h5 class="card-title">Necklace Equipment</h5>
+                            <p class="card-text">Make your ninja better and buy him some equipment!</p>
+                        </div>
+                        <div class="card-body">
+                            @* TODO: Make buy equipment work *@
+                            <a class="btn btn-primary" asp-area="" asp-controller="Ninja" asp-action="Index">Buy equipment</a>
+                        </div>
+                    }
+                </div>
+                <div class="card my-4">
+                    @if (Model.GetEquipmentFromNinja(Category.Chest) != null)
+                    {
+                        <img src="@Model.GetEquipmentFromNinja(Category.Chest).ImageUrl" class="card-img-top" alt="...">
+                        <div class="card-body">
+                            <h5 class="card-title">@Model.GetEquipmentFromNinja(Category.Chest).Name</h5>
+                            <p class="card-text">@(Model.GetEquipmentFromNinja(Category.Chest).Description ?? "Just a basic piece of equipment") </p>
+                        </div>
+                        <ul class="list-group list-group-flush">
+                            <li class="list-group-item">@Model.GetEquipmentFromNinja(Category.Chest).Strength Strenght</li>
+                            <li class="list-group-item">@Model.GetEquipmentFromNinja(Category.Chest).Agility Agility</li>
+                            <li class="list-group-item">@Model.GetEquipmentFromNinja(Category.Chest).Intelligence Intelligence</li>
+                        </ul>
+                        <div class="card-body">
+                            @* TODO: Make sell equipment work *@
+                            <a class="card-link" asp-area="" asp-controller="Ninja" asp-action="Index">Sell equipment</a>
+                        </div>
+                    }
+                    else
+                    {
+                        <div class="card-body">
+                            <h5 class="card-title">Chest Equipment</h5>
+                            <p class="card-text">Make your ninja better and buy him some equipment!</p>
+                        </div>
+                        <div class="card-body">
+                            @* TODO: Make buy equipment work *@
+                            <a class="btn btn-primary" asp-area="" asp-controller="Ninja" asp-action="Index">Buy equipment</a>
+                        </div>
+                    }
+                </div>
+                <div class="card my-4">
+                    @if (Model.GetEquipmentFromNinja(Category.Ring) != null)
+                    {
+                        <img src="@Model.GetEquipmentFromNinja(Category.Ring).ImageUrl" class="card-img-top" alt="...">
+                        <div class="card-body">
+                            <h5 class="card-title">@Model.GetEquipmentFromNinja(Category.Ring).Name</h5>
+                            <p class="card-text">@(Model.GetEquipmentFromNinja(Category.Ring).Description ?? "Just a basic piece of equipment") </p>
+                        </div>
+                        <ul class="list-group list-group-flush">
+                            <li class="list-group-item">@Model.GetEquipmentFromNinja(Category.Ring).Strength Strenght</li>
+                            <li class="list-group-item">@Model.GetEquipmentFromNinja(Category.Ring).Agility Agility</li>
+                            <li class="list-group-item">@Model.GetEquipmentFromNinja(Category.Ring).Intelligence Intelligence</li>
+                        </ul>
+                        <div class="card-body">
+                            @* TODO: Make sell equipment work *@
+                            <a class="card-link" asp-area="" asp-controller="Ninja" asp-action="Index">Sell equipment</a>
+                        </div>
+                    }
+                    else
+                    {
+                        <div class="card-body">
+                            <h5 class="card-title">Ring Equipment</h5>
+                            <p class="card-text">Make your ninja better and buy him some equipment!</p>
+                        </div>
+                        <div class="card-body">
+                            @* TODO: Make buy equipment work *@
+                            <a class="btn btn-primary" asp-area="" asp-controller="Ninja" asp-action="Index">Buy equipment</a>
+                        </div>
+                    }
+                </div>
+            </div>
         </div>
     </div>
 </div>
