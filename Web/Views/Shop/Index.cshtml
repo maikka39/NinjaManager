@@ -8,24 +8,26 @@
         <h1 class="display-4 mb-3">@ViewData["Title"]</h1>
         <a class="btn btn-primary position-absolute" style="right: 0" asp-area="" asp-controller="Shop" asp-action="Create">Create</a>
     </div>
-    <div class="card-deck">
+    <div class="row row-cols-3">
         @foreach (var equipment in Model)
         {
-            <div class="card">
-                <div class="card-body">
-                    <h5 class="card-title">
-                        <a class="edit" asp-area="" asp-controller="Shop" asp-action="Edit" asp-route-id="@equipment.Id">
-                            <i class="fas fa-edit"></i>
-                        </a>
-                        <span>@equipment.Name</span>
-                    </h5>
-                    <h6 class="card-subtitle mb-2 text-muted">@equipment.Category</h6>
-                    <ul class="card-text">
-                        <li>Strength: @equipment.Strength</li>
-                        <li>Intelligence: @equipment.Intelligence</li>
-                        <li>Agility: @equipment.Agility</li>
-                    </ul>
-                    <a class="btn btn-primary" asp-area="" asp-controller="Shop" asp-action="Buy" asp-route-id="@equipment.Id" asp-route-ninjaId="@equipment.NinjaId">Buy $@equipment.Cost</a>
+            <div class="col-4 mb-4">
+                <div class="card">
+                    <div class="card-body">
+                        <h5 class="card-title">
+                            <a class="edit" asp-area="" asp-controller="Shop" asp-action="Edit" asp-route-id="@equipment.Id">
+                                <i class="fas fa-edit"></i>
+                            </a>
+                            <span>@equipment.Name</span>
+                        </h5>
+                        <h6 class="card-subtitle mb-2 text-muted">@equipment.Category</h6>
+                        <ul class="card-text">
+                            <li>Strength: @equipment.Strength</li>
+                            <li>Intelligence: @equipment.Intelligence</li>
+                            <li>Agility: @equipment.Agility</li>
+                        </ul>
+                        <a class="btn btn-primary" asp-area="" asp-controller="Shop" asp-action="Buy" asp-route-id="@equipment.Id" asp-route-ninjaId="@equipment.NinjaId">Buy $@equipment.Cost</a>
+                    </div>
                 </div>
             </div>
         }
