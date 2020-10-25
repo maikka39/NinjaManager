@@ -14,54 +14,61 @@ namespace Web.Controllers
         public IActionResult Index(int ninjaId)
         {
             var equipments = _repo.GetAll();
+            var ninja = _ninjaRepo.GetOne(ninjaId);
+            
+            if (ninja == null)
+                return View(equipments.Select(e => new EquipmentIndexViewModel(e, null)));
 
-            return View(equipments.Select(e => new EquipmentIndexViewModel(e, ninjaId)));
+            return View(equipments.Select(e => new EquipmentIndexViewModel(e,
+                new NinjaShopViewModel(ninja, _ninjaRepo.GetEquipmentsFromNinja(ninja).ToList()))));
         }
-        
+
         public IActionResult Create()
         {
             return View(new EquipmentCreateViewModel());
         }
-        
+
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public IActionResult Create([Bind("Name,Description,ImageUrl,Cost,Category,Strength,Intelligence,Agility")] Equipment equipment)
+        public IActionResult Create([Bind("Name,Description,ImageUrl,Cost,Category,Strength,Intelligence,Agility")]
+            Equipment equipment)
         {
             if (!ModelState.IsValid) return View(new EquipmentCreateViewModel(equipment));
-            
+
             _repo.Create(equipment);
 
             return RedirectToAction("Index");
         }
-        
+
         public IActionResult Edit(int id)
         {
             if (id == 0) return RedirectToAction("Index");
-            
+
             var equipment = _repo.GetOne(id);
             return View(new EquipmentEditViewModel(equipment));
         }
-        
+
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public IActionResult Edit([Bind("Id,Name,Description,ImageUrl,Cost,Category,Strength,Intelligence,Agility")] Equipment equipment)
+        public IActionResult Edit([Bind("Id,Name,Description,ImageUrl,Cost,Category,Strength,Intelligence,Agility")]
+            Equipment equipment)
         {
             if (!ModelState.IsValid) return View(new EquipmentEditViewModel(equipment));
-            
+
             _repo.Update(equipment);
-            
+
             return RedirectToAction("Index");
         }
-        
+
         public IActionResult Delete(int id)
         {
             var isRemoved = _repo.Delete(id);
-            
+
             if (!isRemoved) return NotFound();
-            
+
             return RedirectToAction("Index");
         }
-        
+
         public IActionResult Buy(int id, int ninjaId)
         {
             if (id == 0 || ninjaId == 0) return RedirectToAction("Index");
@@ -73,6 +80,9 @@ namespace Web.Controllers
 
             if (ninja.Gold < equipment.Cost) return RedirectToAction("Index");
 
+            if (_ninjaRepo.GetEquipmentsFromNinja(ninja).ToList().Any(e => e.Category == equipment.Category))
+                return RedirectToAction("Index");
+
             ninja.Gold -= equipment.Cost;
 
             var newEquipments = _ninjaRepo.GetEquipmentsFromNinja(ninja).Select(e => e.Id).ToList();
@@ -82,7 +92,7 @@ namespace Web.Controllers
 
             _ninjaRepo.Update(ninja);
 
-            return RedirectToAction("Index", new {ninjaId});
+            return RedirectToAction("Details", "Ninja", new {id = ninjaId});
         }
     }
 }

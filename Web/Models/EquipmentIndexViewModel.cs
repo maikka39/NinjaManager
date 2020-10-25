@@ -14,9 +14,9 @@ namespace Web.Models
         public int Intelligence { get; }
         public int Agility { get; }
         
-        public int NinjaId { get; }
+        public NinjaShopViewModel Ninja { get; }
 
-        public EquipmentIndexViewModel(Equipment equipment, int ninjaId)
+        public EquipmentIndexViewModel(Equipment equipment, NinjaShopViewModel ninja)
         {
             Id = equipment.Id;
             Name = equipment.Name;
@@ -28,7 +28,16 @@ namespace Web.Models
             Intelligence = equipment.Intelligence;
             Agility = equipment.Agility;
 
-            NinjaId = ninjaId;
+            Ninja = ninja;
+        }
+
+        public bool CanBuy()
+        {
+            if (Ninja == null) return false;
+
+            if (Ninja.HasCategory(Category)) return false;
+
+            return Ninja.Gold >= Cost;
         }
     }
 }

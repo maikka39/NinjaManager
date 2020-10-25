@@ -45,8 +45,8 @@ namespace Data
             using var ctx = new NinjaManagerContext();
 
             ninja = ctx.Ninjas.Include(n => n.Equipments).ThenInclude(ne => ne.Equipment).FirstOrDefault(n => n == ninja);
-            
-            return ninja.Equipments.Select(i => i.Equipment);
+
+            return ninja == null ? new List<Equipment>() : ninja.Equipments.Select(i => i.Equipment);
         }
 
         public Ninja Update(Ninja ninja)
