@@ -1,7 +1,7 @@
 @using Data
 @model Web.Models.NinjaViewModel
 @{
-    ViewData["Title"] = "Ninja - Details";
+    ViewData["Title"] = "Ninja Details";
 }
 
 <div class="container">
@@ -13,20 +13,20 @@
         <div class="row">
             <div class="col">
                 <div class="card my-4">
-                    @if (Model.GetEquipmentFromNinja(Category.Head) != null)
+                    @if (Model.Head != null)
                     {
-                        <img src="@Model.GetEquipmentFromNinja(Category.Head).ImageUrl" class="card-img-top" alt="...">
+                        <img src="@Model.Head.ImageUrl" class="card-img-top" alt="...">
                         <div class="card-body">
-                            <h5 class="card-title">@Model.GetEquipmentFromNinja(Category.Head).Name</h5>
-                            <p class="card-text">@(Model.GetEquipmentFromNinja(Category.Head).Description ?? "Just a basic piece of equipment") </p>
+                            <h5 class="card-title">@Model.Head.Name</h5>
+                            <p class="card-text">@Model.Head.Description</p>
                         </div>
                         <ul class="list-group list-group-flush">
-                            <li class="list-group-item">@Model.GetEquipmentFromNinja(Category.Head).Strength Strenght</li>
-                            <li class="list-group-item">@Model.GetEquipmentFromNinja(Category.Head).Agility Agility</li>
-                            <li class="list-group-item">@Model.GetEquipmentFromNinja(Category.Head).Intelligence Intelligence</li>
+                            <li class="list-group-item"><span class="font-weight-bold">Strenght:</span> @Model.Head.Strength</li>
+                            <li class="list-group-item"><span class="font-weight-bold">Agility:</span> @Model.Head.Agility</li>
+                            <li class="list-group-item"><span class="font-weight-bold">Intelligence:</span> @Model.Head.Intelligence</li>
                         </ul>
                         <div class="card-body">
-                            <a class="card-link" asp-area="" asp-controller="Ninja" asp-action="SellEquipment" asp-route-ninjaId="@Model.Id" asp-route-equipmentId="@Model.GetEquipmentFromNinja(Category.Head).Id">Sell equipment</a>
+                            <a class="card-link" asp-area="" asp-controller="Ninja" asp-action="SellEquipment" asp-route-ninjaId="@Model.Id" asp-route-equipmentId="@Model.Head.Id">Sell equipment</a>
                         </div>
                     }
                     else
@@ -42,20 +42,20 @@
                     }
                 </div>
                 <div class="card my-4">
-                    @if (Model.GetEquipmentFromNinja(Category.Hand) != null)
+                    @if (Model.Hand != null)
                     {
-                        <img src="@Model.GetEquipmentFromNinja(Category.Hand).ImageUrl" class="card-img-top" alt="...">
+                        <img src="@Model.Hand.ImageUrl" class="card-img-top" alt="...">
                         <div class="card-body">
-                            <h5 class="card-title">@Model.GetEquipmentFromNinja(Category.Hand).Name</h5>
-                            <p class="card-text">@(Model.GetEquipmentFromNinja(Category.Hand).Description ?? "Just a basic piece of equipment") </p>
+                            <h5 class="card-title">@Model.Hand.Name</h5>
+                            <p class="card-text">@Model.Hand.Description</p>
                         </div>
                         <ul class="list-group list-group-flush">
-                            <li class="list-group-item">@Model.GetEquipmentFromNinja(Category.Hand).Strength Strenght</li>
-                            <li class="list-group-item">@Model.GetEquipmentFromNinja(Category.Hand).Agility Agility</li>
-                            <li class="list-group-item">@Model.GetEquipmentFromNinja(Category.Hand).Intelligence Intelligence</li>
+                            <li class="list-group-item">@Model.Hand.Strength Strenght</li>
+                            <li class="list-group-item">@Model.Hand.Agility Agility</li>
+                            <li class="list-group-item">@Model.Hand.Intelligence Intelligence</li>
                         </ul>
                         <div class="card-body">
-                            <a class="card-link" asp-area="" asp-controller="Ninja" asp-action="SellEquipment" asp-route-ninjaId="@Model.Id" asp-route-equipmentId="@Model.GetEquipmentFromNinja(Category.Hand).Id">Sell equipment</a>
+                            <a class="card-link" asp-area="" asp-controller="Ninja" asp-action="SellEquipment" asp-route-ninjaId="@Model.Id" asp-route-equipmentId="@Model.Hand.Id">Sell equipment</a>
                         </div>
                     }
                     else
@@ -71,20 +71,20 @@
                     }
                 </div>
                 <div class="card my-4">
-                    @if (Model.GetEquipmentFromNinja(Category.Feet) != null)
+                    @if (Model.Feet != null)
                     {
-                        <img src="@Model.GetEquipmentFromNinja(Category.Feet).ImageUrl" class="card-img-top" alt="...">
+                        <img src="@Model.Feet.ImageUrl" class="card-img-top" alt="...">
                         <div class="card-body">
-                            <h5 class="card-title">@Model.GetEquipmentFromNinja(Category.Feet).Name</h5>
-                            <p class="card-text">@(Model.GetEquipmentFromNinja(Category.Feet).Description ?? "Just a basic piece of equipment") </p>
+                            <h5 class="card-title">@Model.Feet.Name</h5>
+                            <p class="card-text">@Model.Feet.Description</p>
                         </div>
                         <ul class="list-group list-group-flush">
-                            <li class="list-group-item">@Model.GetEquipmentFromNinja(Category.Feet).Strength Strenght</li>
-                            <li class="list-group-item">@Model.GetEquipmentFromNinja(Category.Feet).Agility Agility</li>
-                            <li class="list-group-item">@Model.GetEquipmentFromNinja(Category.Feet).Intelligence Intelligence</li>
+                            <li class="list-group-item">@Model.Feet.Strength Strenght</li>
+                            <li class="list-group-item">@Model.Feet.Agility Agility</li>
+                            <li class="list-group-item">@Model.Feet.Intelligence Intelligence</li>
                         </ul>
                         <div class="card-body">
-                            <a class="card-link" asp-area="" asp-controller="Ninja" asp-action="SellEquipment" asp-route-ninjaId="@Model.Id" asp-route-equipmentId="@Model.GetEquipmentFromNinja(Category.Feet).Id">Sell equipment</a>
+                            <a class="card-link" asp-area="" asp-controller="Ninja" asp-action="SellEquipment" asp-route-ninjaId="@Model.Id" asp-route-equipmentId="@Model.Feet.Id">Sell equipment</a>
                         </div>
                     }
                     else
@@ -105,20 +105,20 @@
             </div>
             <div class="col">
                 <div class="card my-4">
-                    @if (Model.GetEquipmentFromNinja(Category.Necklace) != null)
+                    @if (Model.Necklace != null)
                     {
-                        <img src="@Model.GetEquipmentFromNinja(Category.Necklace).ImageUrl" class="card-img-top" alt="...">
+                        <img src="@Model.Necklace.ImageUrl" class="card-img-top" alt="...">
                         <div class="card-body">
-                            <h5 class="card-title">@Model.GetEquipmentFromNinja(Category.Necklace).Name</h5>
-                            <p class="card-text">@(Model.GetEquipmentFromNinja(Category.Necklace).Description ?? "Just a basic piece of equipment") </p>
+                            <h5 class="card-title">@Model.Necklace.Name</h5>
+                            <p class="card-text">@Model.Necklace.Description</p>
                         </div>
                         <ul class="list-group list-group-flush">
-                            <li class="list-group-item">@Model.GetEquipmentFromNinja(Category.Necklace).Strength Strenght</li>
-                            <li class="list-group-item">@Model.GetEquipmentFromNinja(Category.Necklace).Agility Agility</li>
-                            <li class="list-group-item">@Model.GetEquipmentFromNinja(Category.Necklace).Intelligence Intelligence</li>
+                            <li class="list-group-item">@Model.Necklace.Strength Strenght</li>
+                            <li class="list-group-item">@Model.Necklace.Agility Agility</li>
+                            <li class="list-group-item">@Model.Necklace.Intelligence Intelligence</li>
                         </ul>
                         <div class="card-body">
-                            <a class="card-link" asp-area="" asp-controller="Ninja" asp-action="SellEquipment" asp-route-ninjaId="@Model.Id" asp-route-equipmentId="@Model.GetEquipmentFromNinja(Category.Necklace).Id">Sell equipment</a>
+                            <a class="card-link" asp-area="" asp-controller="Ninja" asp-action="SellEquipment" asp-route-ninjaId="@Model.Id" asp-route-equipmentId="@Model.Necklace.Id">Sell equipment</a>
                         </div>
                     }
                     else
@@ -134,20 +134,20 @@
                     }
                 </div>
                 <div class="card my-4">
-                    @if (Model.GetEquipmentFromNinja(Category.Chest) != null)
+                    @if (Model.Chest != null)
                     {
-                        <img src="@Model.GetEquipmentFromNinja(Category.Chest).ImageUrl" class="card-img-top" alt="...">
+                        <img src="@Model.Chest.ImageUrl" class="card-img-top" alt="...">
                         <div class="card-body">
-                            <h5 class="card-title">@Model.GetEquipmentFromNinja(Category.Chest).Name</h5>
-                            <p class="card-text">@(Model.GetEquipmentFromNinja(Category.Chest).Description ?? "Just a basic piece of equipment") </p>
+                            <h5 class="card-title">@Model.Chest.Name</h5>
+                            <p class="card-text">@Model.Chest.Description</p>
                         </div>
                         <ul class="list-group list-group-flush">
-                            <li class="list-group-item">@Model.GetEquipmentFromNinja(Category.Chest).Strength Strenght</li>
-                            <li class="list-group-item">@Model.GetEquipmentFromNinja(Category.Chest).Agility Agility</li>
-                            <li class="list-group-item">@Model.GetEquipmentFromNinja(Category.Chest).Intelligence Intelligence</li>
+                            <li class="list-group-item">@Model.Chest.Strength Strenght</li>
+                            <li class="list-group-item">@Model.Chest.Agility Agility</li>
+                            <li class="list-group-item">@Model.Chest.Intelligence Intelligence</li>
                         </ul>
                         <div class="card-body">
-                            <a class="card-link" asp-area="" asp-controller="Ninja" asp-action="SellEquipment" asp-route-id="@Model.Id @Model.GetEquipmentFromNinja(Category.Chest).Id">Sell equipment</a>
+                            <a class="card-link" asp-area="" asp-controller="Ninja" asp-action="SellEquipment" asp-route-id="@Model.Id @Model.Chest.Id">Sell equipment</a>
                         </div>
                     }
                     else
@@ -163,20 +163,20 @@
                     }
                 </div>
                 <div class="card my-4">
-                    @if (Model.GetEquipmentFromNinja(Category.Ring) != null)
+                    @if (Model.Ring != null)
                     {
-                        <img src="@Model.GetEquipmentFromNinja(Category.Ring).ImageUrl" class="card-img-top" alt="...">
+                        <img src="@Model.Ring.ImageUrl" class="card-img-top" alt="...">
                         <div class="card-body">
-                            <h5 class="card-title">@Model.GetEquipmentFromNinja(Category.Ring).Name</h5>
-                            <p class="card-text">@(Model.GetEquipmentFromNinja(Category.Ring).Description ?? "Just a basic piece of equipment") </p>
+                            <h5 class="card-title">@Model.Ring.Name</h5>
+                            <p class="card-text">@Model.Ring.Description</p>
                         </div>
                         <ul class="list-group list-group-flush">
-                            <li class="list-group-item">@Model.GetEquipmentFromNinja(Category.Ring).Strength Strenght</li>
-                            <li class="list-group-item">@Model.GetEquipmentFromNinja(Category.Ring).Agility Agility</li>
-                            <li class="list-group-item">@Model.GetEquipmentFromNinja(Category.Ring).Intelligence Intelligence</li>
+                            <li class="list-group-item">@Model.Ring.Strength Strenght</li>
+                            <li class="list-group-item">@Model.Ring.Agility Agility</li>
+                            <li class="list-group-item">@Model.Ring.Intelligence Intelligence</li>
                         </ul>
                         <div class="card-body">
-                            <a class="card-link" asp-area="" asp-controller="Ninja" asp-action="SellEquipment" asp-route-id="@Model.Id @Model.GetEquipmentFromNinja(Category.Ring).Id">Sell equipment</a>
+                            <a class="card-link" asp-area="" asp-controller="Ninja" asp-action="SellEquipment" asp-route-id="@Model.Id @Model.Ring.Id">Sell equipment</a>
                         </div>
                     }
                     else

@@ -18,7 +18,7 @@ namespace Data
         
         public string SkinUrl { get; set; }
         
-        public ICollection<NinjaEquipment> NinjaEquipment { get; set; }
+        public ICollection<NinjaEquipment> Equipments { get; set; }
 
     }
 }

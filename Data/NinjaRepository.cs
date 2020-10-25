@@ -1,5 +1,7 @@
+using System;
 using System.Collections.Generic;
 using System.Linq;
+using Microsoft.EntityFrameworkCore;
 
 namespace Data
 {
@@ -38,10 +40,49 @@ namespace Data
             return ctx.Ninjas.FirstOrDefault(n => n.Id == id);
         }
 
+        public IEnumerable<Equipment> GetEquipmentsFromNinja(Ninja ninja)
+        {
+            using var ctx = new NinjaManagerContext();
+
+            ninja = ctx.Ninjas.Include(n => n.Equipments).ThenInclude(ne => ne.Equipment).FirstOrDefault(n => n == ninja);
+            
+            return ninja.Equipments.Select(i => i.Equipment);
+        }
+
         public Ninja Update(Ninja ninja)
         {
             using var ctx = new NinjaManagerContext();
             ctx.Attach(ninja);
+            ctx.Ninjas.Update(ninja);
+            ctx.SaveChanges();
+            return ninja;
+        }
+        
+        public Ninja UpdateEquipments(Ninja ninja, List<Equipment> equipments)
+        {
+            using var ctx = new NinjaManagerContext();
+
+            ctx.Attach(ninja);
+
+            ctx.Entry(ninja).Collection(n => n.Equipments).Load();
+
+            var equipmentsInNinja = ninja.Equipments.Select(i => i.EquipmentId).ToArray();
+
+            foreach (var equipment in ctx.Equipments)
+            {
+                if (equipments.Contains(equipment))
+                {
+                    if (!equipmentsInNinja.Contains(equipment.Id))
+                    {
+                        ninja.Equipments.Add(new NinjaEquipment {NinjaId = ninja.Id, EquipmentId = equipment.Id});
+                    }
+                }
+                else if (equipmentsInNinja.Contains(equipment.Id))
+                {
+                    ctx.Remove(ninja.Equipments.FirstOrDefault(ne => ne.EquipmentId == equipment.Id)!);
+                }
+            }
+
             ctx.Ninjas.Update(ninja);
             ctx.SaveChanges();
             return ninja;

@@ -32,7 +32,7 @@ namespace Data
 
         [Required] public int Agility { get; set; }
         
-        public ICollection<NinjaEquipment> NinjaEquipment { get; set; }
+        public ICollection<NinjaEquipment> Ninjas { get; set; }
     }
 
     public enum Category

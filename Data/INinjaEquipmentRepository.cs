@@ -8,7 +8,6 @@ namespace Data
         List<Equipment> GetEquipmentFromNinja(Ninja ninja);
         public List<Ninja> GetNinjaFromEquipment(Equipment equipment);
         bool Delete(int ninjaId, int equipmentId);
-        NinjaEquipment Update(NinjaEquipment ninjaEquipment);
         NinjaEquipment Create(NinjaEquipment ninjaEquipment);
     }
 }

@@ -5,8 +5,8 @@ namespace Data
     public class NinjaManagerContext : DbContext
     {
         public DbSet<Ninja> Ninjas { get; set; }
-        public DbSet<Equipment> Equipment { get; set; }
-        public DbSet<NinjaEquipment> NinjaEquipment { get; set; }
+        public DbSet<Equipment> Equipments { get; set; }
+        public DbSet<NinjaEquipment> NinjaEquipments { get; set; }
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
@@ -19,11 +19,11 @@ namespace Data
             modelBuilder.Entity<NinjaEquipment>().HasKey(ne => new {ne.NinjaId, ne.EquipmentId});
             modelBuilder.Entity<NinjaEquipment>()
                 .HasOne(ne => ne.Ninja)
-                .WithMany(e => e.NinjaEquipment)
+                .WithMany(e => e.Equipments)
                 .HasForeignKey(ne => ne.NinjaId);
             modelBuilder.Entity<NinjaEquipment>()
                 .HasOne(n => n.Equipment)
-                .WithMany(e => e.NinjaEquipment)
+                .WithMany(e => e.Ninjas)
                 .HasForeignKey(ne => ne.EquipmentId);
 
             var ninja = new Ninja {Id = 1, Name = "Cool ninja", Gold = 1500};

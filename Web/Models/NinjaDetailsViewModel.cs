@@ -1,0 +1,48 @@
+﻿using System;
+using System.Collections;
+using System.Collections.Generic;
+using System.Linq;
+using Data;
+
+namespace Web.Models
+{
+    public class NinjaViewModel
+    {
+        public int Id { get; }
+        public string Name { get; }
+        public int Gold { get; }
+        public string SkinUrl { get; }
+
+        private IEnumerable<Equipment> _equipments;
+
+        public Equipment Head { get; }
+        public Equipment Chest { get; }
+        public Equipment Hand { get; }
+        public Equipment Feet { get; }
+        public Equipment Ring { get; }
+        public Equipment Necklace { get; }
+
+
+        public NinjaViewModel(Ninja ninja, IEnumerable<Equipment> equipments)
+        {
+            Id = ninja.Id;
+            Name = ninja.Name;
+            Gold = ninja.Gold;
+            SkinUrl = ninja.SkinUrl;
+
+            _equipments = equipments;
+
+            Head = GetEquipment(Category.Head);
+            Chest = GetEquipment(Category.Chest);
+            Hand = GetEquipment(Category.Hand);
+            Feet = GetEquipment(Category.Feet);
+            Ring = GetEquipment(Category.Ring);
+            Necklace = GetEquipment(Category.Necklace);
+        }
+
+        private Equipment GetEquipment(Category category)
+        {
+            return _equipments.FirstOrDefault(equipment => equipment.Category == category);
+        }
+    }
+}

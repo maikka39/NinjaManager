@@ -28,24 +28,37 @@ namespace Web.Controllers
             if (id == 0) return RedirectToAction("Index");
 
             var ninja = _repo.GetOne(id);
-            return View(new NinjaViewModel(ninja));
+            var equipments = _repo.GetEquipmentsFromNinja(ninja);
+            return View(new NinjaViewModel(ninja, equipments));
         }
-        
+
         public IActionResult SellEquipment(int ninjaId, int equipmentId)
         {
             if (ninjaId == 0 || equipmentId == 0) return RedirectToAction("Index");
-            var updateNinja = _repo.GetOne(ninjaId);
-            updateNinja.Gold += _repo.GetOne(ninjaId).NinjaEquipment.First(o => o.EquipmentId == equipmentId).Equipment.Cost;
-            
-            return RedirectToAction("RemoveEquipmentFromNinja", "NinjaEquipment", new {ninjaId, equipmentId});
+
+            var ninja = _repo.GetOne(ninjaId);
+            var equipment = _repo.GetEquipmentsFromNinja(ninja).FirstOrDefault(e => e.Id == equipmentId);
+
+            if (ninja == null || equipment == null) return NotFound();
+
+            ninja.Gold += equipment.Cost;
+
+            var newEquipments = _repo.GetEquipmentsFromNinja(ninja).ToList();
+            newEquipments.Remove(equipment);
+
+            _repo.UpdateEquipments(ninja, newEquipments);
+
+            _repo.Update(ninja);
+
+            return RedirectToAction("Details", new {id = ninjaId});
         }
 
         public IActionResult Delete(int id)
         {
             var isRemoved = _repo.Delete(id);
-            
-            if (!isRemoved) Response.StatusCode = (int)HttpStatusCode.NotFound;
-            
+
+            if (!isRemoved) Response.StatusCode = (int) HttpStatusCode.NotFound;
+
             return RedirectToAction("Index");
         }
 
