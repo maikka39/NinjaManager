@@ -26,7 +26,8 @@ namespace Web.Models
             Id = ninja.Id;
             Name = ninja.Name;
             Gold = ninja.Gold;
-            SkinUrl = ninja.SkinUrl;
+            
+            SkinUrl = SkinUrl != null ? ninja.SkinUrl : "/images/skins/steve.png";
 
             _equipments = equipments;
 
