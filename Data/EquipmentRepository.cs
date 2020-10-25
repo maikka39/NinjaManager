@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using System.Linq;
+using Microsoft.EntityFrameworkCore;
 
 namespace Data
 {
@@ -16,11 +17,27 @@ namespace Data
         public bool Delete(int id)
         {
             using var ctx = new NinjaManagerContext();
-            var toRemove = ctx.Equipments.Find(id);
+            var equipment = ctx.Equipments.Find(id);
 
-            if (toRemove == null) return false;
+            if (equipment == null) return false;
 
-            ctx.Equipments.Remove(toRemove);
+            var ninjas = GetNinjaFromEquipments(equipment);
+            
+            var repo = new NinjaRepository();
+
+            foreach (var ninja in ninjas.ToList())
+            {
+                ninja.Gold += equipment.Cost;
+
+                var newEquipments = repo.GetEquipmentsFromNinja(ninja).Select(e => e.Id).ToList();
+                newEquipments.Remove(equipment.Id);
+
+                repo.UpdateEquipments(ninja, newEquipments);
+
+                repo.Update(ninja);
+            }
+
+            ctx.Equipments.Remove(equipment);
             ctx.SaveChanges();
 
             return true;
@@ -36,6 +53,15 @@ namespace Data
         {
             using var ctx = new NinjaManagerContext();
             return ctx.Equipments.FirstOrDefault(m => m.Id == id);
+        }
+        
+        public IEnumerable<Ninja> GetNinjaFromEquipments(Equipment equipment)
+        {
+            using var ctx = new NinjaManagerContext();
+
+            equipment = ctx.Equipments.Include(e => e.Ninjas).ThenInclude(ne => ne.Ninja).FirstOrDefault(e => e == equipment);
+
+            return equipment == null ? new List<Ninja>() : equipment.Ninjas.Select(i => i.Ninja);
         }
 
         public Equipment Update(Equipment equipment)
