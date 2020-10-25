@@ -78,6 +78,14 @@ body {
 /* Other styles
 -------------------------------------------------- */
 
+.img-size {
+    object-fit: contain;
+}
+
+.fixed-card-size {
+    height: 35%;
+}
+
 .card-body .edit {
     position: absolute;
     display: inline-block;
