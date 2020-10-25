@@ -11,9 +11,13 @@ namespace Web.Controllers
         private readonly IEquipmentRepository _repo = new EquipmentRepository();
         private readonly INinjaRepository _ninjaRepo = new NinjaRepository();
 
-        public IActionResult Index(int ninjaId, Category category)
+        public IActionResult Index(int ninjaId, Category category, bool all)
         {
-            var equipments = _repo.GetAll().FindAll(e => e.Category == category);
+            var equipments = _repo.GetAll();
+            
+            if (!all)
+                equipments = equipments.FindAll(e => e.Category == category);
+
             var ninja = _ninjaRepo.GetOne(ninjaId);
             
             if (ninja == null)
