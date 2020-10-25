@@ -42,5 +42,29 @@ namespace Web.Models
         {
             return _equipments.FirstOrDefault(equipment => equipment.Category == category);
         }
+
+        public int GetTotalGold()
+        {
+            return Gold + GetGearValue();
+        }
+        public int GetGearValue()
+        {
+            return _equipments.Sum(equipment => equipment.Cost);
+        }
+
+        public int GetTotalStrength()
+        {
+            return _equipments.Sum(equipment => equipment.Strength);
+        }
+        
+        public int GetTotalAgility()
+        {
+            return _equipments.Sum(equipment => equipment.Agility);
+        }
+        
+        public int GetTotalIntelligence()
+        {
+            return _equipments.Sum(equipment => equipment.Intelligence);
+        }
     }
 }
