@@ -58,7 +58,7 @@ namespace Data
             return ninja;
         }
         
-        public Ninja UpdateEquipments(Ninja ninja, List<Equipment> equipments)
+        public Ninja UpdateEquipments(Ninja ninja, List<int> equipments)
         {
             using var ctx = new NinjaManagerContext();
 
@@ -70,7 +70,7 @@ namespace Data
 
             foreach (var equipment in ctx.Equipments)
             {
-                if (equipments.Contains(equipment))
+                if (equipments.Contains(equipment.Id))
                 {
                     if (!equipmentsInNinja.Contains(equipment.Id))
                     {

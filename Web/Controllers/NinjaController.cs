@@ -43,8 +43,8 @@ namespace Web.Controllers
 
             ninja.Gold += equipment.Cost;
 
-            var newEquipments = _repo.GetEquipmentsFromNinja(ninja).ToList();
-            newEquipments.Remove(equipment);
+            var newEquipments = _repo.GetEquipmentsFromNinja(ninja).Select(e => e.Id).ToList();
+            newEquipments.Remove(equipment.Id);
 
             _repo.UpdateEquipments(ninja, newEquipments);
 

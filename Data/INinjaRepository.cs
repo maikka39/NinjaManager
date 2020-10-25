@@ -9,7 +9,7 @@ namespace Data
         IEnumerable<Equipment> GetEquipmentsFromNinja(Ninja ninja);
         bool Delete(int id);
         Ninja Update(Ninja ninja);
-        Ninja UpdateEquipments(Ninja ninja, List<Equipment> equipments);
+        Ninja UpdateEquipments(Ninja ninja, List<int> equipments);
         Ninja Create(Ninja ninja);
     }
 }
