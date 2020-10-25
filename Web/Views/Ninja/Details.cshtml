@@ -1,3 +1,4 @@
+@using Data
 @model Web.Models.NinjaDetailsViewModel
 @{
     ViewData["Title"] = "Ninja Details";
@@ -41,7 +42,7 @@
                 <p class="card-text">Make your ninja better and buy him some equipment!</p>
             </div>
             <div class="card-body d-flex align-items-end">
-                <a class="btn btn-primary" asp-area="" asp-controller="Shop" asp-action="Index" asp-route-ninjaId="@Model.Id">Buy helmet</a>
+                <a class="btn btn-primary" asp-area="" asp-controller="Shop" asp-action="Index" asp-route-ninjaId="@Model.Id" asp-route-category="@Category.Helmet">Buy helmet</a>
             </div>
         }
     </div>
@@ -75,7 +76,7 @@
                 <p class="card-text">Make your ninja better and buy him some equipment!</p>
             </div>
             <div class="card-body d-flex align-items-end">
-                <a class="btn btn-primary" asp-area="" asp-controller="Shop" asp-action="Index" asp-route-ninjaId="@Model.Id">Buy leggings</a>
+                <a class="btn btn-primary" asp-area="" asp-controller="Shop" asp-action="Index" asp-route-ninjaId="@Model.Id" asp-route-category="@Category.Leggings">Buy leggings</a>
             </div>
         }
     </div>
@@ -109,7 +110,7 @@
                 <p class="card-text">Make your ninja better and buy him some equipment!</p>
             </div>
             <div class="card-body d-flex align-items-end">
-                <a class="btn btn-primary" asp-area="" asp-controller="Shop" asp-action="Index" asp-route-ninjaId="@Model.Id">Buy sword</a>
+                <a class="btn btn-primary" asp-area="" asp-controller="Shop" asp-action="Index" asp-route-ninjaId="@Model.Id" asp-route-category="@Category.Sword">Buy sword</a>
             </div>
         }
     </div>
@@ -170,7 +171,7 @@
                 <p class="card-text">Make your ninja better and buy him some equipment!</p>
             </div>
             <div class="card-body d-flex align-items-end">
-                <a class="btn btn-primary" asp-area="" asp-controller="Shop" asp-action="Index" asp-route-ninjaId="@Model.Id">Buy chestplate</a>
+                <a class="btn btn-primary" asp-area="" asp-controller="Shop" asp-action="Index" asp-route-ninjaId="@Model.Id" asp-route-category="@Category.Chestplate">Buy chestplate</a>
             </div>
         }
     </div>
@@ -204,7 +205,7 @@
                 <p class="card-text">Make your ninja better and buy him some equipment!</p>
             </div>
             <div class="card-body d-flex align-items-end">
-                <a class="btn btn-primary" asp-area="" asp-controller="Shop" asp-action="Index" asp-route-ninjaId="@Model.Id">Buy boots</a>
+                <a class="btn btn-primary" asp-area="" asp-controller="Shop" asp-action="Index" asp-route-ninjaId="@Model.Id" asp-route-category="@Category.Boots">Buy boots</a>
             </div>
         }
     </div>
@@ -238,7 +239,7 @@
                 <p class="card-text">Make your ninja better and buy him some equipment!</p>
             </div>
             <div class="card-body d-flex align-items-end">
-                <a class="btn btn-primary" asp-area="" asp-controller="Shop" asp-action="Index" asp-route-ninjaId="@Model.Id">Buy potion</a>
+                <a class="btn btn-primary" asp-area="" asp-controller="Shop" asp-action="Index" asp-route-ninjaId="@Model.Id" asp-route-category="@Category.Potion">Buy potion</a>
             </div>
         }
     </div>

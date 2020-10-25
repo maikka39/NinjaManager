@@ -96,6 +96,8 @@ namespace Data
                 Strength = 360, Agility = -10, Intelligence = -40
             };
             
+            modelBuilder.Entity<Equipment>().HasData(leggings1, leggings2, leggings3);
+            
             var boots1 = new Equipment
             {
                 Id = 10, Name = "Leather Boots", Description = "Nice thick leather to keep your feet warm.",
@@ -146,13 +148,13 @@ namespace Data
             };
             var potion2 = new Equipment
             {
-                Id = 17, Name = "Regeneration potion", Description = "If you need some more time.",
+                Id = 17, Name = "Regeneration Potion", Description = "If you need some more time.",
                 ImageUrl = "/images/equipment/potion/Potion_of_Regeneration.gif", Cost = 300, Category = Category.Potion,
                 Strength = 300, Agility = 0, Intelligence = 0
             };
             var potion3 = new Equipment
             {
-                Id = 18, Name = "Swiftness potion", Description = "If you're in a hurry.",
+                Id = 18, Name = "Swiftness Potion", Description = "If you're in a hurry.",
                 ImageUrl = "/images/equipment/potion/Potion_of_Swiftness.gif", Cost = 300, Category = Category.Potion,
                 Strength = 0, Agility = 300, Intelligence = 0
             };
