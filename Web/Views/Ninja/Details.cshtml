@@ -1,0 +1,26 @@
+@using Data
+@model Web.Models.NinjaViewModel
+@{
+    ViewData["Title"] = "Ninja - Details";
+}
+
+<div class="container">
+    <div class="d-flex align-items-center justify-content-center position-relative">
+        <h1 class="display-4 mb-3">@ViewData["Title"]</h1>
+        <a class="btn btn-primary" style="right: 0" asp-area="" asp-controller="Ninja" asp-action="Index">Back</a>
+    </div>
+    <div class="container">
+        <div class="row">
+            <div class="col">
+                <div class="card">
+                    <img src="@Model.GetEquipmentFromNinja(Category.Head)?.ImageUrl" class="card-img-top" alt="...">
+                    <div class="card-body">
+                        <div class="card-title">@Model.GetEquipmentFromNinja(Category.Head)?.Name</div>
+                    </div>
+                </div>
+            </div>
+            <div class="col"></div>
+            <div class="col"></div>
+        </div>
+    </div>
+</div>

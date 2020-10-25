@@ -1,6 +1,7 @@
 using System;
 using Data;
 using Microsoft.AspNetCore.Mvc;
+using Web.Models;
 
 namespace Web.Controllers
 {
@@ -18,6 +19,14 @@ namespace Web.Controllers
         public IActionResult Create()
         {
             return View(new Ninja());
+        }
+        
+        public IActionResult Details(int id)
+        {
+            if (id == 0) return RedirectToAction("Index");
+            
+            var ninja = _repo.GetOne(id);
+            return View(new NinjaViewModel(ninja));
         }
         
         public IActionResult Delete()
