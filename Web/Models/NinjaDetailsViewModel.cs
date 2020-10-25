@@ -13,12 +13,12 @@ namespace Web.Models
 
         private IEnumerable<Equipment> _equipments;
 
-        public Equipment Head { get; }
-        public Equipment Chest { get; }
-        public Equipment Hand { get; }
-        public Equipment Feet { get; }
-        public Equipment Ring { get; }
-        public Equipment Necklace { get; }
+        public Equipment Helmet { get; }
+        public Equipment Chestplate { get; }
+        public Equipment Leggings { get; }
+        public Equipment Boots { get; }
+        public Equipment Sword { get; }
+        public Equipment Potion { get; }
 
 
         public NinjaDetailsViewModel(Ninja ninja, IEnumerable<Equipment> equipments)
@@ -30,12 +30,12 @@ namespace Web.Models
 
             _equipments = equipments;
 
-            Head = GetEquipment(Category.Head);
-            Chest = GetEquipment(Category.Chest);
-            Hand = GetEquipment(Category.Hand);
-            Feet = GetEquipment(Category.Feet);
-            Ring = GetEquipment(Category.Ring);
-            Necklace = GetEquipment(Category.Necklace);
+            Helmet = GetEquipment(Category.Helmet);
+            Chestplate = GetEquipment(Category.Chestplate);
+            Leggings = GetEquipment(Category.Leggings);
+            Boots = GetEquipment(Category.Boots);
+            Sword = GetEquipment(Category.Sword);
+            Potion = GetEquipment(Category.Potion);
         }
 
         private Equipment GetEquipment(Category category)

@@ -34,7 +34,7 @@ namespace Data
             var hat = new Equipment
             {
                 Id = 1, Name = "Fancy Hat", Description = "A cheap basic hat which makes you go a little faster.",
-                ImageUrl = "/images/equipment/head/golden_helmet.png", Cost = 300, Category = Category.Head,
+                ImageUrl = "/images/equipment/head/golden_helmet.png", Cost = 300, Category = Category.Helmet,
                 Strength = 5, Agility = 200, Intelligence = 30
             };
             modelBuilder.Entity<Equipment>().HasData(hat);
@@ -42,13 +42,13 @@ namespace Data
                 .HasData(new Equipment
                 {
                     Id = 2, Name = "Pumpkin", Description = "A creepy pumpkin to scare others.",
-                    ImageUrl = "/images/equipment/head/carved_pumpkin.png", Cost = 20, Category = Category.Head,
+                    ImageUrl = "/images/equipment/head/carved_pumpkin.png", Cost = 20, Category = Category.Helmet,
                     Strength = 25, Agility = -50, Intelligence = -40
                 });
             modelBuilder.Entity<Equipment>().HasData(new Equipment
             {
                 Id = 3, Name = "Diamond Chestplate", Description = "Covers the upper body of the player.",
-                ImageUrl = "/images/equipment/chest/diamond_chestplate.png", Cost = 800, Category = Category.Chest,
+                ImageUrl = "/images/equipment/chest/diamond_chestplate.png", Cost = 800, Category = Category.Chestplate,
                 Strength = 100, Agility = -50, Intelligence = 20
             });
 
