@@ -1,5 +1,5 @@
-@using Data
-@model Data.Equipment
+@using Web.Models
+@model Web.Models.EquipmentEditViewModel
 
 @{
     ViewData["Title"] = "Shop - Edit";
@@ -35,7 +35,7 @@
         <div class="form-group">
             @Html.LabelFor(model => model.Category, new {@class = "control-label col-md-2"})
             @Html.DropDownListFor(m => m.Category,
-                new SelectList(Enum.GetValues(typeof(Category)), Model.Category),
+                new SelectList(CategoriesViewModel.GetCategories(), Model.Category),
                 "Select Category", new {@class = "form-control browser-default custom-select"})
             @Html.ValidationMessageFor(model => model.Category, "", new {@class = "text-danger"})
         </div>
