@@ -1,6 +1,5 @@
 using System;
 using System.Linq;
-using System.Net;
 using Data;
 using Microsoft.AspNetCore.Mvc;
 using Web.Models;
@@ -10,12 +9,13 @@ namespace Web.Controllers
     public class ShopController : Controller
     {
         private readonly IEquipmentRepository _repo = new EquipmentRepository();
+        private readonly INinjaRepository _ninjaRepo = new NinjaRepository();
 
-        public IActionResult Index()
+        public IActionResult Index(int ninjaId)
         {
             var equipments = _repo.GetAll();
 
-            return View(equipments.Select(e => new EquipmentIndexViewModel(e)));
+            return View(equipments.Select(e => new EquipmentIndexViewModel(e, ninjaId)));
         }
         
         public IActionResult Create()
@@ -60,6 +60,29 @@ namespace Web.Controllers
             if (!isRemoved) return NotFound();
             
             return RedirectToAction("Index");
+        }
+        
+        public IActionResult Buy(int id, int ninjaId)
+        {
+            if (id == 0 || ninjaId == 0) return RedirectToAction("Index");
+
+            var equipment = _repo.GetOne(id);
+            var ninja = _ninjaRepo.GetOne(ninjaId);
+
+            if (equipment == null || ninja == null) return NotFound();
+
+            if (ninja.Gold < equipment.Cost) return RedirectToAction("Index");
+
+            ninja.Gold -= equipment.Cost;
+
+            var newEquipments = _ninjaRepo.GetEquipmentsFromNinja(ninja).Select(e => e.Id).ToList();
+            newEquipments.Add(equipment.Id);
+
+            _ninjaRepo.UpdateEquipments(ninja, newEquipments);
+
+            _ninjaRepo.Update(ninja);
+
+            return RedirectToAction("Index", new {ninjaId});
         }
     }
 }
