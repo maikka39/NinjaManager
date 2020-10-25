@@ -26,8 +26,7 @@
                             <li class="list-group-item">@Model.GetEquipmentFromNinja(Category.Head).Intelligence Intelligence</li>
                         </ul>
                         <div class="card-body">
-                            @* TODO: Make sell equipment work *@
-                            <a class="card-link" asp-area="" asp-controller="Ninja" asp-action="Index">Sell equipment</a>
+                            <a class="card-link" asp-area="" asp-controller="Ninja" asp-action="SellEquipment" asp-route-ninjaId="@Model.Id" asp-route-equipmentId="@Model.GetEquipmentFromNinja(Category.Head).Id">Sell equipment</a>
                         </div>
                     }
                     else
@@ -56,8 +55,7 @@
                             <li class="list-group-item">@Model.GetEquipmentFromNinja(Category.Hand).Intelligence Intelligence</li>
                         </ul>
                         <div class="card-body">
-                            @* TODO: Make sell equipment work *@
-                            <a class="card-link" asp-area="" asp-controller="Ninja" asp-action="Index">Sell equipment</a>
+                            <a class="card-link" asp-area="" asp-controller="Ninja" asp-action="SellEquipment" asp-route-ninjaId="@Model.Id" asp-route-equipmentId="@Model.GetEquipmentFromNinja(Category.Hand).Id">Sell equipment</a>
                         </div>
                     }
                     else
@@ -86,8 +84,7 @@
                             <li class="list-group-item">@Model.GetEquipmentFromNinja(Category.Feet).Intelligence Intelligence</li>
                         </ul>
                         <div class="card-body">
-                            @* TODO: Make sell equipment work *@
-                            <a class="card-link" asp-area="" asp-controller="Ninja" asp-action="Index">Sell equipment</a>
+                            <a class="card-link" asp-area="" asp-controller="Ninja" asp-action="SellEquipment" asp-route-ninjaId="@Model.Id" asp-route-equipmentId="@Model.GetEquipmentFromNinja(Category.Feet).Id">Sell equipment</a>
                         </div>
                     }
                     else
@@ -104,7 +101,7 @@
                 </div>
             </div>
             <div class="col">
-                
+
             </div>
             <div class="col">
                 <div class="card my-4">
@@ -121,8 +118,7 @@
                             <li class="list-group-item">@Model.GetEquipmentFromNinja(Category.Necklace).Intelligence Intelligence</li>
                         </ul>
                         <div class="card-body">
-                            @* TODO: Make sell equipment work *@
-                            <a class="card-link" asp-area="" asp-controller="Ninja" asp-action="Index">Sell equipment</a>
+                            <a class="card-link" asp-area="" asp-controller="Ninja" asp-action="SellEquipment" asp-route-ninjaId="@Model.Id" asp-route-equipmentId="@Model.GetEquipmentFromNinja(Category.Necklace).Id">Sell equipment</a>
                         </div>
                     }
                     else
@@ -151,8 +147,7 @@
                             <li class="list-group-item">@Model.GetEquipmentFromNinja(Category.Chest).Intelligence Intelligence</li>
                         </ul>
                         <div class="card-body">
-                            @* TODO: Make sell equipment work *@
-                            <a class="card-link" asp-area="" asp-controller="Ninja" asp-action="Index">Sell equipment</a>
+                            <a class="card-link" asp-area="" asp-controller="Ninja" asp-action="SellEquipment" asp-route-id="@Model.Id @Model.GetEquipmentFromNinja(Category.Chest).Id">Sell equipment</a>
                         </div>
                     }
                     else
@@ -181,8 +176,7 @@
                             <li class="list-group-item">@Model.GetEquipmentFromNinja(Category.Ring).Intelligence Intelligence</li>
                         </ul>
                         <div class="card-body">
-                            @* TODO: Make sell equipment work *@
-                            <a class="card-link" asp-area="" asp-controller="Ninja" asp-action="Index">Sell equipment</a>
+                            <a class="card-link" asp-area="" asp-controller="Ninja" asp-action="SellEquipment" asp-route-id="@Model.Id @Model.GetEquipmentFromNinja(Category.Ring).Id">Sell equipment</a>
                         </div>
                     }
                     else

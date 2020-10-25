@@ -1,4 +1,5 @@
 using System;
+using System.Linq;
 using System.Net;
 using Data;
 using Microsoft.AspNetCore.Mvc;
@@ -25,11 +26,20 @@ namespace Web.Controllers
         public IActionResult Details(int id)
         {
             if (id == 0) return RedirectToAction("Index");
-            
+
             var ninja = _repo.GetOne(id);
             return View(new NinjaViewModel(ninja));
         }
         
+        public IActionResult SellEquipment(int ninjaId, int equipmentId)
+        {
+            if (ninjaId == 0 || equipmentId == 0) return RedirectToAction("Index");
+            var updateNinja = _repo.GetOne(ninjaId);
+            updateNinja.Gold += _repo.GetOne(ninjaId).NinjaEquipment.First(o => o.EquipmentId == equipmentId).Equipment.Cost;
+            
+            return RedirectToAction("RemoveEquipmentFromNinja", "NinjaEquipment", new {ninjaId, equipmentId});
+        }
+
         public IActionResult Delete(int id)
         {
             var isRemoved = _repo.Delete(id);
