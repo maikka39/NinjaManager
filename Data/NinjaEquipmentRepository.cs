@@ -13,10 +13,10 @@ namespace Data
             return ninjaEquipment;
         }
 
-        public bool Delete(int id)
+        public bool Delete(int ninjaId, int equipmentId)
         {
             using var ctx = new NinjaManagerContext();
-            var toRemove = ctx.NinjaEquipment.Find(id);
+            var toRemove = ctx.NinjaEquipment.First(o => o.EquipmentId == equipmentId && o.NinjaId == ninjaId);
 
             if (toRemove == null) return false;
 
