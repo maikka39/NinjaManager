@@ -77,6 +77,88 @@ namespace Data
 
             modelBuilder.Entity<Equipment>().HasData(chestplate1, chestplate2, chestplate3);
             
+            var leggings1 = new Equipment
+            {
+                Id = 7, Name = "Chainmail Leggings", Description = "Nice thick leather to keep your butt warm.",
+                ImageUrl = "/images/equipment/leggings/chainmail_leggings.png", Cost = 160, Category = Category.Leggings,
+                Strength = 10, Agility = 40, Intelligence = 30
+            };
+            var leggings2 = new Equipment
+            {
+                Id = 8, Name = "Iron Leggings", Description = "Just some nice pants.",
+                ImageUrl = "/images/equipment/leggings/iron_leggings.png", Cost = 320, Category = Category.Leggings,
+                Strength = 60, Agility = -80, Intelligence = 100
+            };
+            var leggings3 = new Equipment
+            {
+                Id = 9, Name = "Diamond Leggings", Description = "Helps just a bit.",
+                ImageUrl = "/images/equipment/leggings/diamond_leggings.png", Cost = 470, Category = Category.Leggings,
+                Strength = 360, Agility = -10, Intelligence = -40
+            };
+            
+            var boots1 = new Equipment
+            {
+                Id = 10, Name = "Leather Boots", Description = "Nice thick leather to keep your feet warm.",
+                ImageUrl = "/images/equipment/boots/leather_boots.png", Cost = 90, Category = Category.Boots,
+                Strength = 0, Agility = 110, Intelligence = -30
+            };
+            var boots2 = new Equipment
+            {
+                Id = 11, Name = "Iron Boots", Description = "Just some nice shiny shoes.",
+                ImageUrl = "/images/equipment/boots/iron_boots.png", Cost = 220, Category = Category.Boots,
+                Strength = 160, Agility = -30, Intelligence = 10
+            };
+            var boots3 = new Equipment
+            {
+                Id = 12, Name = "Netherite Boots", Description = "Heavy metal rock shoes.",
+                ImageUrl = "/images/equipment/boots/netherite_boots.png", Cost = 440, Category = Category.Boots,
+                Strength = 160, Agility = 20, Intelligence = -30
+            };
+            
+            modelBuilder.Entity<Equipment>().HasData(boots1, boots2, boots3);
+            
+            var sword1 = new Equipment
+            {
+                Id = 13, Name = "Golden Sword", Description = "Cheap gold but it's good looking.",
+                ImageUrl = "/images/equipment/sword/golden_sword.png", Cost = 40, Category = Category.Sword,
+                Strength = 20, Agility = 10, Intelligence = 10
+            };
+            var sword2 = new Equipment
+            {
+                Id = 14, Name = "Iron Sword", Description = "Will do the trick.",
+                ImageUrl = "/images/equipment/sword/iron_sword.png", Cost = 220, Category = Category.Sword,
+                Strength = 160, Agility = -30, Intelligence = 10
+            };
+            var sword3 = new Equipment
+            {
+                Id = 15, Name = "Netherite Sword", Description = "Heavy metal blade of doom.",
+                ImageUrl = "/images/equipment/sword/netherite_sword.png", Cost = 640, Category = Category.Sword,
+                Strength = 430, Agility = 80, Intelligence = 60
+            };
+            
+            modelBuilder.Entity<Equipment>().HasData(sword1, sword2, sword3);
+            
+            var potion1 = new Equipment
+            {
+                Id = 16, Name = "Night Vision Potion", Description = "To see everything.",
+                ImageUrl = "/images/equipment/potion/Potion_of_Night_Vision.gif", Cost = 300, Category = Category.Potion,
+                Strength = 0, Agility = 0, Intelligence = 300
+            };
+            var potion2 = new Equipment
+            {
+                Id = 17, Name = "Regeneration potion", Description = "If you need some more time.",
+                ImageUrl = "/images/equipment/potion/Potion_of_Regeneration.gif", Cost = 300, Category = Category.Potion,
+                Strength = 300, Agility = 0, Intelligence = 0
+            };
+            var potion3 = new Equipment
+            {
+                Id = 18, Name = "Swiftness potion", Description = "If you're in a hurry.",
+                ImageUrl = "/images/equipment/potion/Potion_of_Swiftness.gif", Cost = 300, Category = Category.Potion,
+                Strength = 0, Agility = 300, Intelligence = 0
+            };
+            
+            modelBuilder.Entity<Equipment>().HasData(potion1, potion2, potion3);
+            
             modelBuilder.Entity<NinjaEquipment>()
                 .HasData(new NinjaEquipment {NinjaId = ninja1.Id, EquipmentId = helmet3.Id}, new NinjaEquipment {NinjaId = ninja1.Id, EquipmentId = chestplate2.Id});
             modelBuilder.Entity<NinjaEquipment>()
