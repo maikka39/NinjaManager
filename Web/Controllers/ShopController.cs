@@ -1,4 +1,5 @@
 using System;
+using System.Net;
 using Data;
 using Microsoft.AspNetCore.Mvc;
 
@@ -54,6 +55,15 @@ namespace Web.Controllers
             
             _repo.Update(equipment);
             
+            
+            return RedirectToAction("Index");
+        }
+        
+        public IActionResult Delete(int id)
+        {
+            var isRemoved = _repo.Delete(id);
+            
+            if (!isRemoved) Response.StatusCode = (int)HttpStatusCode.NotFound;
             
             return RedirectToAction("Index");
         }
