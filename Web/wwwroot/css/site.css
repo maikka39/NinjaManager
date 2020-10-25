@@ -80,10 +80,7 @@ body {
 
 .img-size {
     object-fit: contain;
-}
-
-.fixed-card-size {
-    height: 35%;
+    height: 9rem;
 }
 
 .card-body .edit {
