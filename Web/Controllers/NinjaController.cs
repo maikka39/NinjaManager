@@ -13,14 +13,14 @@ namespace Web.Controllers
 
         public IActionResult Index()
         {
-            var model = _repo.GetAll();
+            var ninjas = _repo.GetAll();
 
-            return View(model);
+            return View(ninjas.Select(n => new NinjaIndexViewModel(n)));
         }
 
         public IActionResult Create()
         {
-            return View(new Ninja());
+            return View(new NinjaCreateViewModel());
         }
 
         public IActionResult Details(int id)
@@ -29,7 +29,7 @@ namespace Web.Controllers
 
             var ninja = _repo.GetOne(id);
             var equipments = _repo.GetEquipmentsFromNinja(ninja);
-            return View(new NinjaViewModel(ninja, equipments));
+            return View(new NinjaDetailsViewModel(ninja, equipments));
         }
 
         public IActionResult SellEquipment(int ninjaId, int equipmentId)
@@ -66,7 +66,7 @@ namespace Web.Controllers
         [ValidateAntiForgeryToken]
         public IActionResult Create([Bind("Name,Gold,SkinUrl")] Ninja ninja)
         {
-            if (!ModelState.IsValid) return View(ninja);
+            if (!ModelState.IsValid) return View(new NinjaCreateViewModel(ninja));
 
             _repo.Create(ninja);
 
@@ -78,14 +78,14 @@ namespace Web.Controllers
             if (id == 0) return RedirectToAction("Index");
 
             var ninja = _repo.GetOne(id);
-            return View(ninja);
+            return View(new NinjaEditViewModel(ninja));
         }
 
         [HttpPost]
         [ValidateAntiForgeryToken]
         public IActionResult Edit([Bind("Id,Name,Gold,SkinUrl")] Ninja ninja)
         {
-            if (!ModelState.IsValid) return View(ninja);
+            if (!ModelState.IsValid) return View(new NinjaEditViewModel(ninja));
 
             _repo.Update(ninja);
 

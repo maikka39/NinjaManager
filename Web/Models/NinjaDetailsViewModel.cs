@@ -1,12 +1,10 @@
-﻿using System;
-using System.Collections;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
 using Data;
 
 namespace Web.Models
 {
-    public class NinjaViewModel
+    public class NinjaDetailsViewModel
     {
         public int Id { get; }
         public string Name { get; }
@@ -23,7 +21,7 @@ namespace Web.Models
         public Equipment Necklace { get; }
 
 
-        public NinjaViewModel(Ninja ninja, IEnumerable<Equipment> equipments)
+        public NinjaDetailsViewModel(Ninja ninja, IEnumerable<Equipment> equipments)
         {
             Id = ninja.Id;
             Name = ninja.Name;
