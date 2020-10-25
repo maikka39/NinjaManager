@@ -27,7 +27,7 @@ namespace Data
                 .HasForeignKey(ne => ne.EquipmentId);
 
             var ninja1 = new Ninja {Id = 1, Name = "Cool ninja", Gold = 1500};
-            var ninja2 = new Ninja {Id = 2, Name = "Awesome_ninja67", Gold = 2000};
+            var ninja2 = new Ninja {Id = 2, Name = "Awesome_ninja67", Gold = 2000, SkinUrl = "/images/skins/alex.png"};
             var ninja3 = new Ninja {Id = 3, Name = "Blockplacer", Gold = 1200};
             var ninja4 = new Ninja {Id = 4, Name = "Stealthy", Gold = 3200};
             var ninja5 = new Ninja {Id = 5, Name = "Epicness", Gold = 4000};
