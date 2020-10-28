@@ -14,7 +14,7 @@ namespace Data
         [StringLength(40, MinimumLength = 1)]
         public string Name { get; set; }
 
-        [Required] [Range(0, int.MaxValue)] public int Gold { get; set; }
+        [Required] [Range(0, 10000)] public int Gold { get; set; }
         
         public string SkinUrl { get; set; }
         

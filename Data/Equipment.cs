@@ -22,15 +22,15 @@ namespace Data
         [StringLength(512, MinimumLength = 3)]
         public string ImageUrl { get; set; }
 
-        [Required] [Range(0, int.MaxValue)] public int Cost { get; set; }
+        [Required] [Range(0, 10000)] public int Cost { get; set; }
 
         [Required] public Category Category { get; set; }
 
-        [Required] public int Strength { get; set; }
+        [Required] [Range(-5000, 5000)] public int Strength { get; set; }
 
-        [Required] public int Intelligence { get; set; }
+        [Required] [Range(-5000, 5000)] public int Intelligence { get; set; }
 
-        [Required] public int Agility { get; set; }
+        [Required] [Range(-5000, 5000)] public int Agility { get; set; }
         
         public ICollection<NinjaEquipment> Ninjas { get; set; }
     }
